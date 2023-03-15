@@ -27,7 +27,7 @@ prob = 1 - (num_single_civs / (num_civs * TRIALS))
 # print ratio of civs-per-volume vs. probability of 2+ civs per location   
 print("{:.4f}   {:.4f}".format(civs_per_vol, prob))
 x.append(civs_per_vol)
-y.append(prob)”
+y.append(prob)
 
 coefficients = np.polyfit(x, y, 4)  # 4th order polynomial fit
 p = np.poly1d(coefficients)
