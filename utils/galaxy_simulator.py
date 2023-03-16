@@ -30,7 +30,7 @@ def scale_galaxy():
     disc_radius_scaled = round(DISC_RADIUS / SCALE)
     bubble_vol = 4/3 * math.pi * (SCALE / 2)**3
     disc_vol_scaled = DISC_VOL/bubble_vol
-    return disc_radius_scaled, disc_vol_scaled➎
+    return disc_radius_scaled, disc_vol_scaled
 
 def detect_prob(disc_vol_scaled):
     """Calculate probability of galactic civilizations detecting each other."""
