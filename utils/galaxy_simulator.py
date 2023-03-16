@@ -24,3 +24,22 @@ c.configure(scrollregion=(-500, -400, 500, 400))
 DISC_RADIUS = 50000
 DISC_HEIGHT = 1000
 DISC_VOL = math.pi * DISC_RADIUS**2 * DISC_HEIGHT
+
+def scale_galaxy():
+    """Scale galaxy dimensions based on radio bubble size (scale)."""
+    disc_radius_scaled = round(DISC_RADIUS / SCALE)
+    bubble_vol = 4/3 * math.pi * (SCALE / 2)**3
+    disc_vol_scaled = DISC_VOL/bubble_vol
+    return disc_radius_scaled, disc_vol_scaled➎
+
+def detect_prob(disc_vol_scaled):
+    """Calculate probability of galactic civilizations detecting each other."""
+    ratio = NUM_CIVS / disc_vol_scaled  # ratio of civs to scaled galaxy volume    
+    if ratio < 0.002: # set very low ratios to probability of 0           
+        detection_prob = 0
+    elif ratio >= 5: # set high ratios to probability of 1           
+        detection_prob = 1
+    else:
+        detection_prob = -0.004757 * ratio**4 + 0.06681 * ratio**3 - 0.3605 * \
+            ratio**2 + 0.9215 * ratio + 0.00826
+    return round(detection_prob, 3)
